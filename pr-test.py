@@ -28,7 +28,7 @@ url = (f"https://api.bitbucket.org/2.0/repositories/{WORKSPACE}/{SERVICE_NAME}/c
  #Bitbucket PR Comments URL
 
 
-def export(SERVICE_NAME):
+def export():
 
     # Function to write data in chunks to Excel
     def write_chunk_to_excel(filename, chunk_data, mode='w'):
@@ -139,7 +139,7 @@ def export(SERVICE_NAME):
     else:
         print(f'No issues found in {SERVICE_NAME}.')
 
-def inspectorFindingsExport(SERVICE_NAME):
+def inspectorFindingsExport():
     response = inspector2_client.create_findings_report(
         filterCriteria={
             'findingStatus': [
@@ -221,6 +221,9 @@ def inspectorFindingsExport(SERVICE_NAME):
     # file_obj = s3.get_object(Bucket=BUCKET_NAME, Key=latest_key)
     # csv_bytes = file_obj["Body"].read()
     s3.download_file(BUCKET_NAME, latest_key, f"inspector2-{SERVICE_NAME}.csv")
+
+export()
+inspectorFindingsExport()
 
 with ExitStack() as stack:
     files = [
