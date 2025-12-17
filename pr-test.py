@@ -52,7 +52,7 @@ def export():
     page_size = 500  # Page size, maximum allowed by SonarQube
 
     # Adjust date ranges as necessary to ensure each range returns less than 10,000 issues
-    start_date = datetime.now() - timedelta(days=90)# Example start date
+    start_date = datetime.now()# Example start date
     end_date = datetime.now()# Current date and time
     delta = timedelta(days=7)  # Adjust the range to ensure < 10,000 results
     excel_file = f'./sonarqube-{SERVICE_NAME}.xlsx'
