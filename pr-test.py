@@ -154,7 +154,7 @@ def inspectorFindingsExport():
                     'value': 'latest'
                 },
             ],
-            'ecrRepositoryName': [
+            'ecrImageRepositoryName': [
                 {
                     'comparison': 'EQUALS',
                     'value': SERVICE_NAME
