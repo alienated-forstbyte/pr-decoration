@@ -55,7 +55,7 @@ def export(SERVICE_NAME):
     start_date = datetime.now() - timedelta(days=90)# Example start date
     end_date = datetime.now()# Current date and time
     delta = timedelta(days=7)  # Adjust the range to ensure < 10,000 results
-    excel_file = f'./sonarube-{SERVICE_NAME}.xlsx'
+    excel_file = f'./sonarqube-{SERVICE_NAME}.xlsx'
     current_start_date = start_date
     all_issues = []
     chunk_size = 10000  # Write to file every 5000 issues
@@ -154,7 +154,7 @@ def inspectorFindingsExport(SERVICE_NAME):
                     'value': 'latest'
                 },
             ],
-            'repositoryNames': [
+            'ecrRepositoryName': [
                 {
                     'comparison': 'EQUALS',
                     'value': SERVICE_NAME
