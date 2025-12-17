@@ -1,13 +1,11 @@
-
-from contextlib import ExitStack
-import time
-
 try:
     import pandas as pd
     import boto3
     import requests
     import base64
     import os
+    import time
+    from contextlib import ExitStack
     from datetime import datetime, timedelta
 except ImportError as e:
     print(f"Missing required dependency: {e}")
@@ -15,10 +13,10 @@ except ImportError as e:
     exit(1)
 
 inspector2_client = boto3.client('inspector2')
-BUCKET_NAME = os.getenv('INSPECTOR2_BUCKET_NAME', BUCKET_NAME) #S3 Bucket Name
-KMS_KEY = os.getenv('INSPECTOR2_KMS_KEY', KMS_KEY) #KMS
+BUCKET_NAME = os.getenv('BUCKET_NAME', BUCKET_NAME) #S3 Bucket Name
+KMS_KEY = os.getenv('KMS_KEY', KMS_KEY) #KMS
 SERVICE_NAME = os.getenv('SERVICE_NAME', SERVICE_NAME) #Service Name
-SONARQUBE_URL = os.getenv('SONAR_URL', SONARQUBE_URL) #Sonar Instance URL
+SONARQUBE_URL = os.getenv('SONARQUBE_URL', SONARQUBE_URL) #Sonar Instance URL
 PROJECT_KEY = os.getenv('SONAR_PROJECT_KEY', SERVICE_NAME) #Your Project Key
 TOKEN = os.getenv('SONAR_TOKEN', TOKEN) #Your Project Token
 WORKSPACE = os.getenv('WORKSPACE', WORKSPACE) #Bitbucket Workspace
