@@ -13,17 +13,17 @@ except ImportError as e:
     exit(1)
 
 inspector2_client = boto3.client('inspector2')
-BUCKET_NAME = os.getenv('BUCKET_NAME', BUCKET_NAME) #S3 Bucket Name
-KMS_KEY = os.getenv('KMS_KEY', KMS_KEY) #KMS
-SERVICE_NAME = os.getenv('SERVICE_NAME', SERVICE_NAME) #Service Name
-SONARQUBE_URL = os.getenv('SONARQUBE_URL', SONARQUBE_URL) #Sonar Instance URL
-PROJECT_KEY = os.getenv('SONAR_PROJECT_KEY', SERVICE_NAME) #Your Project Key
-TOKEN = os.getenv('SONAR_TOKEN', TOKEN) #Your Project Token
-WORKSPACE = os.getenv('WORKSPACE', WORKSPACE) #Bitbucket Workspace
-COMMIT_ID = os.getenv('COMMIT_ID', COMMIT_ID) #Commit ID
+BUCKET_NAME = os.getenv('BUCKET_NAME') #S3 Bucket Name
+KMS_KEY = os.getenv('KMS_KEY') #KMS
+SERVICE_NAME = os.getenv('SERVICE_NAME') #Service Name
+SONARQUBE_URL = os.getenv('SONARQUBE_URL') #Sonar Instance URL
+PROJECT_KEY = os.getenv('SERVICE_NAME') #Your Project Key
+TOKEN = os.getenv('SONAR_TOKEN') #Your Project Token
+WORKSPACE = os.getenv('WORKSPACE') #Bitbucket Workspace
+COMMIT_ID = os.getenv('COMMIT_ID') #Commit ID
 
-BB_USER = os.getenv('BB_USER', BB_USER) #Bitbucket Username
-BB_APP_PASS = os.getenv('BB_APP_PASS', BB_APP_PASS) #Bitbucket App Password
+BB_USER = os.getenv('BB_USER') #Bitbucket Username
+BB_APP_PASS = os.getenv('BB_APP_PASS') #Bitbucket App Password
 url = (f"https://api.bitbucket.org/2.0/repositories/{WORKSPACE}/{SERVICE_NAME}/commit/{COMMIT_ID}/pullrequests")
  #Bitbucket PR Comments URL
 
